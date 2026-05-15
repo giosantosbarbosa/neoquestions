@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard do Apresentador — NeoQuestions IF</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Estilos específicos para o Dashboard (Sobrescrevendo o padrão para Dark Mode) */
+        body {
+            background-color: var(--preto-grafite);
+            color: var(--branco);
+        }
+        
+        .dash-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #e9e9e9;
+            border-bottom: 2px solid var(--verde-if);
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+            color: black;
+        }
+
+        .stats-bar {
+            display: flex;
+            gap: 20px;
+        }
+
+        .stat-item {
+            background: rgba(0, 0, 0, 0.1);
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--verde-if);
+        }
+
+        .dashboard-main {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            padding: 30px 40px;
+        }
+
+        .empty-dashboard {
+            text-align: center;
+            padding: 100px;
+            opacity: 0.5;
+        }
+
+        /* Coluna de Destaque */
+        .highlight-zone {
+            background: rgba(46, 155, 50, 0.1);
+            border: 2px dashed var(--verde-if);
+            border-radius: 20px;
+            padding: 20px;
+            min-height: 200px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="dashboard-body">
+
+    <header class="dash-header">
+        <div class="brand">
+            <img src="assets/img/logo-neoquestions.png" alt="Logo NeoQuestions" style="height: 40px; vertical-align: middle;">
+            <span style="font-size: 1.2rem; font-weight: bold; margin-left: 10px;">Painel de Moderação</span>
+        </div>
+        
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-number" id="totalQuestions">0</span>
+                <span style="font-size: 0.7rem; text-transform: uppercase;">Perguntas</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="answeredCount" style="color: #4db8ff;">0</span>
+                <span style="font-size: 0.7rem; text-transform: uppercase;">Respondidas</span>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button onclick="clearAllData()" class="btn-send" style="background: var(--vermelho-if); padding: 10px 20px; font-size: 0.8rem;">
+                <i class="fa-solid fa-trash-can"></i> Limpar Tudo
+            </button>
+        </div>
+    </header>
+
+<main class="dashboard-main">
+    
+    <section class="questions-column">
+        <div class="mobile-filter-tabs" style="display: flex; gap: 10px; margin-bottom: 20px; overflow-x: auto; padding-bottom: 5px;">
+            <button class="chip" onclick="filterQuestions('recent')">Todas</button>
+            <button class="chip" onclick="filterQuestions('unanswered')">Não Respondidas</button>
+        </div>
+
+        <h2 style="margin-bottom: 20px; font-size: 1.2rem;">
+            <i class="fa-solid fa-tower-broadcast" style="color: var(--vermelho-if);"></i> Ao Vivo
+        </h2>
+        
+        <div id="dashQuestionsFeed" class="questions-grid">
+            </div>
+    </section>
+
+    <aside class="sidebar">
+        <h2 style="margin-bottom: 15px; font-size: 1.2rem;">
+            <i class="fa-solid fa-star" style="color: #ffd700;"></i> Em Foco
+        </h2>
+        <div id="highlightedQuestion" class="highlight-zone">
+            </div>
+    </aside>
+</main>
+
+    <div id="toast" style="position: fixed; bottom: 20px; right: 20px; display: none; background: var(--verde-if); padding: 15px 25px; border-radius: 10px; animation: slideIn 0.3s ease;">
+        Nova pergunta recebida!
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

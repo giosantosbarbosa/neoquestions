@@ -1,0 +1,402 @@
+/* NeoQuestions IF - Folha de Estilo Principal
+   Projeto: Seminário Teoria Neoclássica da Administração
+   Cores: IF Sul de Minas
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+    /* Paleta Institucional */
+    --verde-if: #2E9B32;
+    --verde-hover: #45B649;
+    --vermelho-if: #D90000;
+    --preto-grafite: #1E1E1E;
+    --cinza-dashboard: #2C2C2C;
+    --cinza-claro: #F5F5F5;
+    --branco: #FFFFFF;
+    
+    /* Efeitos */
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --border-radius: 12px;
+}
+
+/* Reset e Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--cinza-claro);
+    color: var(--preto-grafite);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Layout Geral */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Header */
+.main-header {
+    background-color: var(--branco);
+    color: var(--verde-if);
+    padding: 40px 20px;
+    text-align: center;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 30px;
+}
+
+.main-header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.main-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    font-weight: 300;
+}
+
+/* Formulário de Envio */
+.form-container {
+    background: var(--branco);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-soft);
+    margin-bottom: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--verde-if);
+}
+
+input[type="text"], 
+textarea {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #edf2f7;
+    border-radius: var(--border-radius);
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: var(--transition);
+    outline: none;
+}
+
+input:focus, 
+textarea:focus {
+    border-color: var(--verde-if);
+    background-color: #f0fdf4;
+}
+
+textarea {
+    height: 120px;
+    resize: none;
+}
+
+.btn-send {
+    width: 100%;
+    background-color: var(--verde-if);
+    color: white;
+    border: none;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 10px rgba(46, 155, 50, 0.3);
+}
+
+.btn-send:hover {
+    background-color: var(--verde-hover);
+    transform: translateY(-2px);
+}
+
+.btn-send:active {
+    transform: translateY(0);
+}
+
+/* Sugestões Rápidas */
+.suggestions {
+    margin-bottom: 30px;
+}
+
+.suggestions h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
+    color: #666;
+}
+
+.suggestion-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    background: #e9ecef;
+    padding: 8px 16px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.chip:hover {
+    background: var(--verde-if);
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Cards de Pergunta Público */
+.question-card {
+    background: var(--branco);
+    padding: 20px;
+    border-radius: 16px;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow-soft);
+    border-left: 5px solid var(--verde-if);
+    animation: slideIn 0.4s ease-out;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.question-card .author {
+    font-weight: 700;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.question-card .text {
+    font-size: 1rem;
+    color: #444;
+}
+
+/* DASHBOARD STYLES */
+.dashboard-body {
+    background-color: var(--preto-grafite);
+    color: var(--branco);
+}
+
+.dash-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.dash-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.dash-card {
+    background: var(--cinza-dashboard);
+    border-radius: 20px;
+    padding: 25px;
+    border: 1px solid #444;
+}
+
+.dash-card.highlight {
+    border-color: var(--verde-if);
+    box-shadow: 0 0 20px rgba(46, 155, 50, 0.2);
+}
+
+.dash-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.action-btn {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-star { background: #ffd700; color: #000; }
+.btn-check { background: var(--verde-if); color: #fff; }
+.btn-delete { background: var(--vermelho-if); color: #fff; }
+
+.action-btn:hover { opacity: 0.8; transform: scale(1.1); }
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .dash-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.if-logo-container img {
+    max-width: 250px;
+    height: auto;
+}
+
+.neoquestions-logo-container img {
+    max-width: 200px;
+    height: auto;
+    padding: 20px;
+}
+
+footer.footer-simple {
+    background-color: var(--branco);
+    color: var(--verde-if);
+    padding: 40px 20px;
+    text-align: center;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    margin-top: 30px;
+    font-size: 12px;
+}
+
+footer img {
+    max-width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+/* Ajustes para Responsividade do Dashboard */
+@media (max-width: 768px) {
+    .dashboard-main {
+        grid-template-columns: 1fr; /* Coluna única no mobile */
+        padding: 15px;
+        display: flex;
+        flex-direction: column-reverse; /* Destaque fica no topo ou perguntas primeiro? Aqui invertemos para o destaque aparecer conforme a necessidade */
+    }
+
+    .dash-header {
+        flex-direction: column;
+        padding: 15px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .stats-bar {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .question-card {
+        padding: 15px;
+    }
+
+    /* Aumentar área de toque dos botões no mobile */
+    .action-btn {
+        padding: 12px 15px;
+        font-size: 1rem;
+    }
+
+    .dash-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        padding-top: 10px;
+    }
+
+    .sidebar {
+        margin-bottom: 30px;
+    }
+}
+
+.suggestion-chips {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 10px;
+    padding: 10px 5px;
+    scroll-behavior: smooth; /* Essencial para o deslize suave */
+    scrollbar-width: none; 
+}
+
+.suggestion-chips::-webkit-scrollbar {
+    display: none;
+}
+
+.scroll-arrow {
+    background: var(--verde-if);
+    color: white;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    z-index: 10;
+    box-shadow: var(--shadow-soft);
+    transition: var(--transition);
+}
+
+.scroll-arrow:hover {
+    background: var(--verde-hover);
+    transform: scale(1.1);
+}
+
+.scroll-arrow.left { left: -15px; }
+.scroll-arrow.right { right: -15px; }
+
+/* Ocultar setas em dispositivos touch (opcional, já que o swipe é natural neles) */
+@media (pointer: coarse) {
+    .scroll-arrow { display: none; }
+}
+
+/* Estilo para pergunta respondida no index.html */
+.question-card.answered {
+    border-left-color: #cbd5e0; /* Cinza para indicar neutralidade */
+    opacity: 0.8;
+    background-color: #f8fafc;
+}
+
+.answered-badge {
+    background-color: var(--verde-if);
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 8px;
+}
